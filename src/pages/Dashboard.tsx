@@ -112,7 +112,7 @@ export default function Dashboard() {
         {todaysWorkouts.length === 0 ? (
           <p className="text-sm text-slate-500 py-4 text-center">
             No workouts logged yet today. Head to{' '}
-            <span className="text-teal-500">Workouts</span> to add one!
+            <span className="text-emerald-500">Workouts</span> to add one!
           </p>
         ) : (
           <div className="space-y-2">
@@ -122,15 +122,9 @@ export default function Dashboard() {
                 className="flex items-center gap-4 px-4 py-3 rounded-lg bg-slate-800/40 hover:bg-slate-800/60 transition-colors"
               >
                 <div
-                  className={`w-9 h-9 rounded-lg flex items-center justify-center ${
-                    w.intensity === 'high'
-                      ? 'bg-white/5 text-slate-300'
-                      : w.intensity === 'moderate'
-                      ? 'bg-white/5 text-slate-400'
-                      : 'bg-white/5 text-slate-500'
-                  }`}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center bg-white/5"
                 >
-                  <Flame size={18} />
+                  <div className="w-2 h-2 rounded-full bg-emerald-500" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-white truncate">
