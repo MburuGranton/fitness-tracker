@@ -1,7 +1,4 @@
 import {
-  Flame,
-  Droplets,
-  TrendingUp,
   Plus,
   Minus,
 } from 'lucide-react';
@@ -29,7 +26,7 @@ export default function Dashboard() {
             <span className="text-xs font-normal text-slate-500 ml-1">/ {goals.calories}</span>
           </p>
           <div className="progress-bar-track mt-2">
-            <div className="progress-bar-fill bg-orange-500" style={{ width: `${Math.min((todayStats.caloriesBurned / goals.calories) * 100, 100)}%` }} />
+            <div className="progress-bar-fill bg-emerald-500" style={{ width: `${Math.min((todayStats.caloriesBurned / goals.calories) * 100, 100)}%` }} />
           </div>
         </div>
         <div className="card">
@@ -39,7 +36,7 @@ export default function Dashboard() {
             <span className="text-xs font-normal text-slate-500 ml-1">/ {goals.steps.toLocaleString()}</span>
           </p>
           <div className="progress-bar-track mt-2">
-            <div className="progress-bar-fill bg-teal-500" style={{ width: `${Math.min((todayStats.steps / goals.steps) * 100, 100)}%` }} />
+            <div className="progress-bar-fill bg-emerald-500" style={{ width: `${Math.min((todayStats.steps / goals.steps) * 100, 100)}%` }} />
           </div>
         </div>
         <div className="card">
@@ -66,10 +63,9 @@ export default function Dashboard() {
           </p>
           <div className="flex gap-1 mt-2">
             {Array.from({ length: goals.water }).map((_, i) => (
-              <Droplets
+              <div
                 key={i}
-                size={14}
-                className={i < todayStats.waterIntake ? 'text-blue-400' : 'text-slate-700'}
+                className={`w-2 h-2 rounded-full ${i < todayStats.waterIntake ? 'bg-emerald-500' : 'bg-slate-700'}`}
               />
             ))}
           </div>
@@ -91,14 +87,14 @@ export default function Dashboard() {
         <WeeklyChart
           data={weeklyStats}
           metric="caloriesBurned"
-          label="Calories Burned"
-          color="#f97316"
+          label="Calories"
+          color="#10b981"
         />
         <WeeklyChart
           data={weeklyStats}
           metric="steps"
           label="Steps"
-          color="#06b6d4"
+          color="#10b981"
         />
       </div>
 
@@ -106,8 +102,7 @@ export default function Dashboard() {
       <div className="card">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-sm font-medium text-white flex items-center gap-2">
-            <TrendingUp size={16} className="text-teal-500" />
-            Today's Activity
+            Today
           </h3>
           <span className="text-xs text-slate-500">
             {todaysWorkouts.length} workout{todaysWorkouts.length !== 1 ? 's' : ''}
@@ -129,10 +124,10 @@ export default function Dashboard() {
                 <div
                   className={`w-9 h-9 rounded-lg flex items-center justify-center ${
                     w.intensity === 'high'
-                      ? 'bg-rose-500/10 text-rose-400'
+                      ? 'bg-white/5 text-slate-300'
                       : w.intensity === 'moderate'
-                      ? 'bg-amber-500/10 text-amber-400'
-                      : 'bg-emerald-500/10 text-emerald-400'
+                      ? 'bg-white/5 text-slate-400'
+                      : 'bg-white/5 text-slate-500'
                   }`}
                 >
                   <Flame size={18} />
@@ -145,7 +140,7 @@ export default function Dashboard() {
                     {w.duration} min · {w.intensity}
                   </p>
                 </div>
-                <span className="text-sm font-semibold text-orange-400">
+                <span className="text-sm tabular-nums text-slate-300">
                   {w.calories} kcal
                 </span>
               </div>

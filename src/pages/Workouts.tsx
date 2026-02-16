@@ -47,9 +47,9 @@ export default function Workouts() {
   };
 
   const intensityColors = {
-    low: 'bg-emerald-500/15 text-emerald-400',
-    moderate: 'bg-amber-500/15 text-amber-400',
-    high: 'bg-rose-500/15 text-rose-400',
+    low: 'bg-white/5 text-slate-400',
+    moderate: 'bg-white/5 text-slate-300',
+    high: 'bg-white/5 text-white',
   };
 
   return (
@@ -136,11 +136,11 @@ export default function Workouts() {
                   </h3>
                   <div className="flex items-center gap-3 text-xs text-slate-500">
                     <span className="flex items-center gap-1">
-                      <Flame size={12} className="text-orange-400" />
+                      <Flame size={12} className="text-slate-500" />
                       {totalCal} kcal
                     </span>
                     <span className="flex items-center gap-1">
-                      <Clock size={12} className="text-teal-500" />
+                      <Clock size={12} className="text-slate-500" />
                       {totalMin} min
                     </span>
                   </div>
@@ -154,7 +154,7 @@ export default function Workouts() {
                       className="card flex items-center gap-4 group/item"
                     >
                       <div
-                        className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
+                        className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 ${
                           intensityColors[w.intensity]
                         }`}
                       >
@@ -172,11 +172,7 @@ export default function Workouts() {
                           <span className="text-xs text-slate-500 flex items-center gap-1">
                             <Flame size={10} /> {w.calories} kcal
                           </span>
-                          <span
-                            className={`text-[10px] font-medium px-1.5 py-0.5 rounded capitalize ${
-                              intensityColors[w.intensity]
-                            }`}
-                          >
+                          <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-white/5 text-slate-400 capitalize">
                             {w.intensity}
                           </span>
                         </div>

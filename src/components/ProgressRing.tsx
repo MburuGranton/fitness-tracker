@@ -50,7 +50,6 @@ export default function ProgressRing({
           strokeDashoffset={offset}
           style={{
             transition: 'stroke-dashoffset 0.8s ease-out',
-            filter: `drop-shadow(0 0 4px ${color}66)`,
           }}
         />
       </svg>

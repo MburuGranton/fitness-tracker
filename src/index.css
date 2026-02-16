@@ -16,13 +16,13 @@
     @apply bg-[#181b24] rounded-lg border border-slate-800/60 p-5;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-teal-600 text-white hover:bg-teal-500 transition-colors;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors;
   }
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition-colors;
   }
   .input-field {
-    @apply w-full px-3 py-2 text-sm bg-[#0f1117] border border-slate-700 rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-teal-600 transition-colors;
+    @apply w-full px-3 py-2 text-sm bg-[#0f1117] border border-slate-700 rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-600 transition-colors;
   }
   .progress-bar-track {
     @apply w-full h-1.5 bg-slate-800 rounded-full overflow-hidden;

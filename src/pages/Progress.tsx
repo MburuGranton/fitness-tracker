@@ -1,4 +1,4 @@
-import { Flame, Footprints, Droplets, Timer, TrendingUp } from 'lucide-react';
+import { Footprints, Droplets } from 'lucide-react';
 import { useFitness } from '../context/FitnessContext';
 import WeeklyChart from '../components/WeeklyChart';
 
@@ -55,14 +55,14 @@ export default function Progress() {
   }, {});
   const totalTypeCount = Object.values(typeDistribution).reduce((a, b) => a + b, 0) || 1;
   const typeColors: Record<string, string> = {
-    running: '#06b6d4',
-    cycling: '#8b5cf6',
-    swimming: '#3b82f6',
-    weights: '#f97316',
+    running: '#10b981',
+    cycling: '#10b981',
+    swimming: '#10b981',
+    weights: '#10b981',
     yoga: '#10b981',
-    hiit: '#ef4444',
-    walking: '#6366f1',
-    stretching: '#a855f7',
+    hiit: '#10b981',
+    walking: '#10b981',
+    stretching: '#10b981',
   };
 
   return (
@@ -101,14 +101,14 @@ export default function Progress() {
         <WeeklyChart
           data={weeklyStats}
           metric="caloriesBurned"
-          label="Calories Burned"
-          color="#f97316"
+          label="Calories"
+          color="#10b981"
         />
         <WeeklyChart
           data={weeklyStats}
           metric="steps"
           label="Steps"
-          color="#06b6d4"
+          color="#10b981"
         />
         <WeeklyChart
           data={weeklyStats}
@@ -119,8 +119,8 @@ export default function Progress() {
         <WeeklyChart
           data={weeklyStats}
           metric="waterIntake"
-          label="Water Intake"
-          color="#3b82f6"
+          label="Water"
+          color="#10b981"
           maxOverride={12}
         />
       </div>
@@ -167,9 +167,9 @@ export default function Progress() {
         <div className="card">
           <h3 className="text-sm font-semibold text-white mb-4">Weekly Highlights</h3>
           <div className="space-y-4">
-            <div className="p-4 rounded-lg bg-amber-500/5 border border-amber-500/10">
-              <p className="text-xs text-amber-400/70 uppercase tracking-wider font-medium mb-1">
-                🏆 Best Day
+            <div className="p-4 rounded-lg bg-slate-800/40 border border-slate-800">
+              <p className="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">
+                Best Day
               </p>
               <p className="text-sm font-medium text-white">
                 {new Date(bestDay.date).toLocaleDateString('en-US', {
@@ -186,7 +186,7 @@ export default function Progress() {
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 rounded-lg bg-slate-800/40">
                 <div className="flex items-center gap-1.5 mb-1">
-                  <Footprints size={12} className="text-teal-500" />
+                  <Footprints size={12} className="text-slate-500" />
                   <span className="text-xs text-slate-400">Total Steps</span>
                 </div>
                 <p className="text-lg font-bold text-white">
@@ -195,7 +195,7 @@ export default function Progress() {
               </div>
               <div className="p-3 rounded-lg bg-slate-800/40">
                 <div className="flex items-center gap-1.5 mb-1">
-                  <Droplets size={12} className="text-blue-400" />
+                  <Droplets size={12} className="text-slate-500" />
                   <span className="text-xs text-slate-400">Total Water</span>
                 </div>
                 <p className="text-lg font-bold text-white">

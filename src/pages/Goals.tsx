@@ -32,8 +32,8 @@ export default function Goals() {
       label: 'Calories',
       unit: 'kcal',
       icon: Flame,
-      color: '#f97316',
-      colorClass: 'orange',
+      color: '#10b981',
+      colorClass: 'emerald',
       current: todayStats.caloriesBurned,
       min: 100,
       max: 3000,
@@ -44,8 +44,8 @@ export default function Goals() {
       label: 'Steps',
       unit: 'steps',
       icon: Footprints,
-      color: '#06b6d4',
-      colorClass: 'primary',
+      color: '#10b981',
+      colorClass: 'emerald',
       current: todayStats.steps,
       min: 1000,
       max: 30000,
@@ -56,8 +56,8 @@ export default function Goals() {
       label: 'Water',
       unit: 'glasses',
       icon: Droplets,
-      color: '#3b82f6',
-      colorClass: 'blue',
+      color: '#10b981',
+      colorClass: 'emerald',
       current: todayStats.waterIntake,
       min: 1,
       max: 16,
@@ -207,7 +207,7 @@ export default function Goals() {
       {/* Daily Summary */}
       <div className="card">
         <div className="flex items-center gap-2 mb-4">
-          <Target size={18} className="text-teal-500" />
+          <Target size={18} className="text-slate-500" />
           <h3 className="text-sm font-semibold text-white">Today's Summary</h3>
         </div>
 

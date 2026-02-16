@@ -41,7 +41,7 @@ export default function WorkoutForm({ onClose }: WorkoutFormProps) {
     <form onSubmit={handleSubmit} className="card space-y-5">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-          <Plus size={18} className="text-teal-500" />
+          <Plus size={18} className="text-emerald-500" />
           Log Workout
         </h3>
         {onClose && (
@@ -68,7 +68,7 @@ export default function WorkoutForm({ onClose }: WorkoutFormProps) {
               onClick={() => setSelectedType(wt)}
               className={`p-2.5 rounded-xl text-xs font-medium text-center transition-all ${
                 selectedType.type === wt.type
-                  ? 'bg-teal-500/10 text-teal-400 ring-1 ring-teal-500/30'
+                  ? 'bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500/30'
                   : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white'
               }`}
             >
@@ -122,10 +122,10 @@ export default function WorkoutForm({ onClose }: WorkoutFormProps) {
                 className={`flex-1 py-2.5 rounded-xl text-xs font-medium capitalize transition-all ${
                   intensity === level
                     ? level === 'low'
-                      ? 'bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-500/40'
+                      ? 'bg-white/5 text-slate-400 ring-1 ring-slate-600'
                       : level === 'moderate'
-                      ? 'bg-amber-500/15 text-amber-400 ring-1 ring-amber-500/40'
-                      : 'bg-rose-500/15 text-rose-400 ring-1 ring-rose-500/40'
+                      ? 'bg-white/5 text-slate-300 ring-1 ring-slate-600'
+                      : 'bg-white/5 text-white ring-1 ring-slate-600'
                     : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                 }`}
               >
@@ -138,7 +138,7 @@ export default function WorkoutForm({ onClose }: WorkoutFormProps) {
 
       {/* Estimated Calories */}
       <div className="flex items-center gap-2 px-4 py-3 rounded-lg bg-slate-800/40 border border-slate-700">
-        <Flame size={16} className="text-orange-400" />
+        <Flame size={16} className="text-slate-400" />
         <span className="text-sm text-slate-300">
           Est. calories:{' '}
           <span className="font-semibold text-white">{estimatedCalories}</span> kcal
