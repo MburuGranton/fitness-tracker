@@ -69,8 +69,7 @@ export default function Progress() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-heading font-bold text-white">Progress</h2>
-        <p className="text-sm text-slate-400 mt-0.5">Your weekly performance overview</p>
+        <h2 className="text-lg font-medium text-white">Progress</h2>
       </div>
 
       {/* Summary Row */}
@@ -205,9 +204,7 @@ export default function Progress() {
               </div>
             </div>
 
-            <p className="text-xs text-slate-500 text-center pt-1">
-              Keep it up! Consistency is key to reaching your goals.
-            </p>
+
           </div>
         </div>
       </div>

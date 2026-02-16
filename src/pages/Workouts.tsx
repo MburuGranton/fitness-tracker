@@ -57,9 +57,9 @@ export default function Workouts() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h2 className="text-2xl font-heading font-bold text-white">Workouts</h2>
-          <p className="text-sm text-slate-400 mt-0.5">
-            {workouts.length} total workouts logged
+          <h2 className="text-lg font-medium text-white">Workouts</h2>
+          <p className="text-sm text-slate-500">
+            {workouts.length} logged
           </p>
         </div>
         <button

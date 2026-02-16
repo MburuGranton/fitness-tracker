@@ -24,16 +24,8 @@ export default function WeeklyChart({
   return (
     <div className="card">
       <div className="flex items-center justify-between mb-5">
-        <div>
-          <h3 className="text-sm font-semibold text-white">{label}</h3>
-          <p className="text-xs text-slate-500 mt-0.5">Last 7 days · avg {avg.toLocaleString()}</p>
-        </div>
-        <div
-          className="px-2.5 py-1 rounded-lg text-xs font-semibold"
-          style={{ backgroundColor: `${color}20`, color }}
-        >
-          {values[values.length - 1]?.toLocaleString()} today
-        </div>
+        <h3 className="text-sm font-medium text-white">{label}</h3>
+        <p className="text-xs text-slate-500 tabular-nums">avg {avg.toLocaleString()}</p>
       </div>
 
       {/* Chart */}

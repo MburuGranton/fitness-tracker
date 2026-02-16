@@ -31,7 +31,7 @@ export default function StatCard({
             {label}
           </p>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-2xl font-heading font-bold text-white">
+            <span className="text-2xl font-semibold text-white tabular-nums">
               {typeof value === 'number' ? value.toLocaleString() : value}
             </span>
             {unit && (

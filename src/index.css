@@ -24,12 +24,6 @@
   .input-field {
     @apply w-full px-3 py-2 text-sm bg-[#0f1117] border border-slate-700 rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-teal-600 transition-colors;
   }
-  .nav-item {
-    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors;
-  }
-  .nav-item-active {
-    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-white bg-slate-800;
-  }
   .progress-bar-track {
     @apply w-full h-1.5 bg-slate-800 rounded-full overflow-hidden;
   }
@@ -37,6 +31,9 @@
     @apply h-full rounded-full transition-all duration-500;
   }
 }
+
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
 
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }

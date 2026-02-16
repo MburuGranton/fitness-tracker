@@ -18,8 +18,7 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      {/* Page heading */}
-      <h2 className="text-lg font-semibold text-white">Dashboard</h2>
+      <h2 className="text-lg font-medium text-white">Overview</h2>
 
       {/* Stats row */}
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">

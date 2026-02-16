@@ -82,10 +82,7 @@ export default function Goals() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h2 className="text-2xl font-heading font-bold text-white">Daily Goals</h2>
-          <p className="text-sm text-slate-400 mt-0.5">
-            Set and track your daily fitness targets
-          </p>
+          <h2 className="text-lg font-medium text-white">Goals</h2>
         </div>
         <div className="flex gap-2">
           <button onClick={handleReset} className="btn-secondary">
