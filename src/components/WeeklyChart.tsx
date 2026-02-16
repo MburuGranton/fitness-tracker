@@ -22,7 +22,7 @@ export default function WeeklyChart({
   const avg = Math.round(values.reduce((a, b) => a + b, 0) / values.length);
 
   return (
-    <div className="card animate-slide-up">
+    <div className="card">
       <div className="flex items-center justify-between mb-5">
         <div>
           <h3 className="text-sm font-semibold text-white">{label}</h3>
@@ -54,18 +54,17 @@ export default function WeeklyChart({
               {/* Bar */}
               <div className="w-full flex justify-center">
                 <div
-                  className="relative w-full max-w-[32px] rounded-lg transition-all duration-700 ease-out group cursor-default"
+                  className="relative w-full max-w-[32px] rounded-md transition-all duration-300 group cursor-default"
                   style={{
                     height: `${pct}%`,
                     minHeight: '6px',
                     background: isToday
-                      ? `linear-gradient(180deg, ${color}, ${color}99)`
-                      : `linear-gradient(180deg, ${color}88, ${color}44)`,
-                    boxShadow: isToday ? `0 0 12px ${color}40` : 'none',
+                      ? color
+                      : `${color}66`,
                   }}
                 >
                   {/* Hover tooltip */}
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-surface-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap pointer-events-none z-10">
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap pointer-events-none z-10">
                     {val.toLocaleString()}
                   </div>
                 </div>
@@ -74,7 +73,7 @@ export default function WeeklyChart({
               {/* Day label */}
               <span
                 className={`text-[11px] font-medium ${
-                  isToday ? 'text-primary-400' : 'text-slate-500'
+                  isToday ? 'text-teal-500' : 'text-slate-500'
                 }`}
               >
                 {isToday ? 'Today' : dayLabels[dayOfWeek]}

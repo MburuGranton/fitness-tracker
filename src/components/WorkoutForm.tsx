@@ -38,17 +38,17 @@ export default function WorkoutForm({ onClose }: WorkoutFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="card animate-scale-in space-y-5">
+    <form onSubmit={handleSubmit} className="card space-y-5">
       <div className="flex items-center justify-between">
-        <h3 className="font-heading font-semibold text-white flex items-center gap-2">
-          <Plus size={18} className="text-primary-400" />
+        <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+          <Plus size={18} className="text-teal-500" />
           Log Workout
         </h3>
         {onClose && (
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg hover:bg-surface-800 text-slate-400 hover:text-white transition-colors"
+            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
           >
             <X size={18} />
           </button>
@@ -68,8 +68,8 @@ export default function WorkoutForm({ onClose }: WorkoutFormProps) {
               onClick={() => setSelectedType(wt)}
               className={`p-2.5 rounded-xl text-xs font-medium text-center transition-all ${
                 selectedType.type === wt.type
-                  ? 'bg-primary-500/15 text-primary-400 ring-1 ring-primary-500/40'
-                  : 'bg-surface-800 text-slate-400 hover:bg-surface-700 hover:text-white'
+                  ? 'bg-teal-500/10 text-teal-400 ring-1 ring-teal-500/30'
+                  : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white'
               }`}
             >
               {wt.name}
@@ -126,7 +126,7 @@ export default function WorkoutForm({ onClose }: WorkoutFormProps) {
                       : level === 'moderate'
                       ? 'bg-amber-500/15 text-amber-400 ring-1 ring-amber-500/40'
                       : 'bg-rose-500/15 text-rose-400 ring-1 ring-rose-500/40'
-                    : 'bg-surface-800 text-slate-400 hover:bg-surface-700'
+                    : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                 }`}
               >
                 {level}
@@ -137,7 +137,7 @@ export default function WorkoutForm({ onClose }: WorkoutFormProps) {
       </div>
 
       {/* Estimated Calories */}
-      <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-surface-800/60 border border-surface-700">
+      <div className="flex items-center gap-2 px-4 py-3 rounded-lg bg-slate-800/40 border border-slate-700">
         <Flame size={16} className="text-orange-400" />
         <span className="text-sm text-slate-300">
           Est. calories:{' '}

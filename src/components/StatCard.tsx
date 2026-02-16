@@ -24,7 +24,7 @@ export default function StatCard({
   const percent = target ? Math.min((numericValue / target) * 100, 100) : 0;
 
   return (
-    <div className="card-hover group animate-slide-up">
+    <div className="card">
       <div className="flex items-start justify-between mb-4">
         <div>
           <p className="text-xs font-medium uppercase tracking-wider text-slate-400 mb-1">
@@ -55,16 +55,16 @@ export default function StatCard({
             >
               <Icon
                 size={18}
-                className={`text-${color}-400 group-hover:scale-110 transition-transform`}
+                className={`text-${color}-400`}
               />
             </ProgressRing>
           ) : (
             <div
-              className={`w-12 h-12 rounded-xl bg-${color}-500/15 flex items-center justify-center`}
+              className={`w-10 h-10 rounded-lg bg-${color}-500/10 flex items-center justify-center`}
             >
               <Icon
-                size={20}
-                className={`text-${color}-400 group-hover:scale-110 transition-transform`}
+                size={18}
+                className={`text-${color}-400`}
               />
             </div>
           )}

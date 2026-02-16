@@ -1,7 +1,6 @@
-import { Flame, Footprints, Droplets, Timer, TrendingUp, Award } from 'lucide-react';
+import { Flame, Footprints, Droplets, Timer, TrendingUp } from 'lucide-react';
 import { useFitness } from '../context/FitnessContext';
 import WeeklyChart from '../components/WeeklyChart';
-import ProgressRing from '../components/ProgressRing';
 
 export default function Progress() {
   const { weeklyStats, workouts, goals } = useFitness();
@@ -74,50 +73,27 @@ export default function Progress() {
         <p className="text-sm text-slate-400 mt-0.5">Your weekly performance overview</p>
       </div>
 
-      {/* Summary Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Streak */}
-        <div className="card-hover text-center py-5 animate-slide-up">
-          <div className="mx-auto mb-3">
-            <ProgressRing radius={32} stroke={4} progress={Math.min(streak * 15, 100)} color="#f59e0b">
-              <Award size={20} className="text-amber-400" />
-            </ProgressRing>
-          </div>
-          <p className="text-2xl font-heading font-bold text-white">{streak}</p>
-          <p className="text-xs text-slate-400 mt-0.5">Day Streak</p>
+      {/* Summary Row */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="card text-center py-4">
+          <p className="text-2xl font-bold text-white">{streak}</p>
+          <p className="text-xs text-slate-500 mt-0.5">Day Streak</p>
         </div>
-
-        {/* Goal Completion */}
-        <div className="card-hover text-center py-5 animate-slide-up">
-          <div className="mx-auto mb-3">
-            <ProgressRing radius={32} stroke={4} progress={goalCompletionRate} color="#10b981">
-              <TrendingUp size={20} className="text-emerald-400" />
-            </ProgressRing>
-          </div>
-          <p className="text-2xl font-heading font-bold text-white">{goalCompletionRate}%</p>
-          <p className="text-xs text-slate-400 mt-0.5">Goals Met</p>
+        <div className="card text-center py-4">
+          <p className="text-2xl font-bold text-white">{goalCompletionRate}%</p>
+          <p className="text-xs text-slate-500 mt-0.5">Goals Met</p>
         </div>
-
-        {/* Weekly Calories */}
-        <div className="card-hover text-center py-5 animate-slide-up">
-          <div className="w-14 h-14 rounded-xl bg-orange-500/15 flex items-center justify-center mx-auto mb-3">
-            <Flame size={24} className="text-orange-400" />
-          </div>
-          <p className="text-2xl font-heading font-bold text-white">
+        <div className="card text-center py-4">
+          <p className="text-2xl font-bold text-white">
             {weekTotals.calories.toLocaleString()}
           </p>
-          <p className="text-xs text-slate-400 mt-0.5">Weekly Calories</p>
+          <p className="text-xs text-slate-500 mt-0.5">Weekly Calories</p>
         </div>
-
-        {/* Weekly Active */}
-        <div className="card-hover text-center py-5 animate-slide-up">
-          <div className="w-14 h-14 rounded-xl bg-primary-500/15 flex items-center justify-center mx-auto mb-3">
-            <Timer size={24} className="text-primary-400" />
-          </div>
-          <p className="text-2xl font-heading font-bold text-white">
+        <div className="card text-center py-4">
+          <p className="text-2xl font-bold text-white">
             {weekTotals.activeMinutes}
           </p>
-          <p className="text-xs text-slate-400 mt-0.5">Active Minutes</p>
+          <p className="text-xs text-slate-500 mt-0.5">Active Minutes</p>
         </div>
       </div>
 
@@ -153,7 +129,7 @@ export default function Progress() {
       {/* Workout Distribution + Best Day */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Workout Type Distribution */}
-        <div className="card animate-slide-up">
+        <div className="card">
           <h3 className="text-sm font-semibold text-white mb-4">
             Workout Distribution
           </h3>
@@ -189,10 +165,10 @@ export default function Progress() {
         </div>
 
         {/* Best Day & Weekly Summary */}
-        <div className="card animate-slide-up">
+        <div className="card">
           <h3 className="text-sm font-semibold text-white mb-4">Weekly Highlights</h3>
           <div className="space-y-4">
-            <div className="p-4 rounded-xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20">
+            <div className="p-4 rounded-lg bg-amber-500/5 border border-amber-500/10">
               <p className="text-xs text-amber-400/70 uppercase tracking-wider font-medium mb-1">
                 🏆 Best Day
               </p>
@@ -209,21 +185,21 @@ export default function Progress() {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="p-3 rounded-xl bg-surface-800/60">
+              <div className="p-3 rounded-lg bg-slate-800/40">
                 <div className="flex items-center gap-1.5 mb-1">
-                  <Footprints size={12} className="text-primary-400" />
+                  <Footprints size={12} className="text-teal-500" />
                   <span className="text-xs text-slate-400">Total Steps</span>
                 </div>
-                <p className="text-lg font-heading font-bold text-white">
+                <p className="text-lg font-bold text-white">
                   {weekTotals.steps.toLocaleString()}
                 </p>
               </div>
-              <div className="p-3 rounded-xl bg-surface-800/60">
+              <div className="p-3 rounded-lg bg-slate-800/40">
                 <div className="flex items-center gap-1.5 mb-1">
                   <Droplets size={12} className="text-blue-400" />
                   <span className="text-xs text-slate-400">Total Water</span>
                 </div>
-                <p className="text-lg font-heading font-bold text-white">
+                <p className="text-lg font-bold text-white">
                   {weekTotals.water} glasses
                 </p>
               </div>

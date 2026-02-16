@@ -101,7 +101,7 @@ export default function Goals() {
 
       {/* Success toast */}
       {saved && (
-        <div className="animate-slide-up p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium text-center">
+        <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium text-center">
           ✓ Goals updated successfully!
         </div>
       )}
@@ -115,7 +115,7 @@ export default function Goals() {
           return (
             <div
               key={item.key}
-              className={`card-hover animate-slide-up ${
+              className={`card ${
                 isComplete ? 'ring-1 ring-emerald-500/30' : ''
               }`}
             >
@@ -184,7 +184,7 @@ export default function Goals() {
                         })
                       }
                       className="w-full h-1.5 rounded-full appearance-none cursor-pointer
-                        bg-surface-800
+                        bg-slate-800
                         [&::-webkit-slider-thumb]:appearance-none
                         [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4
                         [&::-webkit-slider-thumb]:rounded-full
@@ -208,9 +208,9 @@ export default function Goals() {
       </div>
 
       {/* Daily Summary */}
-      <div className="card animate-slide-up">
+      <div className="card">
         <div className="flex items-center gap-2 mb-4">
-          <Target size={18} className="text-primary-400" />
+          <Target size={18} className="text-teal-500" />
           <h3 className="text-sm font-semibold text-white">Today's Summary</h3>
         </div>
 
@@ -222,9 +222,9 @@ export default function Goals() {
             return (
               <div
                 key={item.key}
-                className="text-center p-3 rounded-xl bg-surface-800/60"
+                className="text-center p-3 rounded-lg bg-slate-800/40"
               >
-                <p className="text-2xl font-heading font-bold text-white mb-0.5">
+                <p className="text-2xl font-bold text-white mb-0.5">
                   {pct}%
                 </p>
                 <p className="text-[11px] text-slate-400">{item.label}</p>

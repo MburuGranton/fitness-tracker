@@ -1,14 +1,11 @@
 import {
   Flame,
-  Footprints,
   Droplets,
-  Timer,
   TrendingUp,
   Plus,
   Minus,
 } from 'lucide-react';
 import { useFitness } from '../context/FitnessContext';
-import StatCard from '../components/StatCard';
 import WeeklyChart from '../components/WeeklyChart';
 
 export default function Dashboard() {
@@ -19,116 +16,75 @@ export default function Dashboard() {
     (w) => w.date.split('T')[0] === new Date().toISOString().split('T')[0]
   );
 
-  const streak = (() => {
-    let count = 0;
-    const today = new Date();
-    for (let i = 0; i < 30; i++) {
-      const d = new Date(today);
-      d.setDate(d.getDate() - i);
-      const dateStr = d.toISOString().split('T')[0];
-      const hasWorkout = workouts.some((w) => w.date.split('T')[0] === dateStr);
-      if (hasWorkout) count++;
-      else break;
-    }
-    return count;
-  })();
-
   return (
     <div className="space-y-6">
-      {/* Greeting */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <div>
-          <h2 className="text-2xl font-heading font-bold text-white">
-            Good {new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 18 ? 'afternoon' : 'evening'} 👋
-          </h2>
-          <p className="text-sm text-slate-400 mt-0.5">
-            Here's your fitness summary for today
-          </p>
-        </div>
-        {streak > 0 && (
-          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/20">
-            <span className="text-lg">🔥</span>
-            <span className="text-sm font-semibold text-amber-400">
-              {streak} day streak
-            </span>
-          </div>
-        )}
-      </div>
+      {/* Page heading */}
+      <h2 className="text-lg font-semibold text-white">Dashboard</h2>
 
-      {/* Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        <StatCard
-          label="Calories Burned"
-          value={todayStats.caloriesBurned}
-          target={goals.calories}
-          unit="kcal"
-          icon={Flame}
-          color="orange"
-          ringColor="#f97316"
-        />
-        <StatCard
-          label="Steps"
-          value={todayStats.steps}
-          target={goals.steps}
-          unit="steps"
-          icon={Footprints}
-          color="primary"
-          ringColor="#06b6d4"
-        />
-        <div className="card-hover group animate-slide-up">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-slate-400 mb-1">
-                Water Intake
-              </p>
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-2xl font-heading font-bold text-white">
-                  {todayStats.waterIntake}
-                </span>
-                <span className="text-sm text-slate-400 font-medium">
-                  / {goals.water} glasses
-                </span>
-              </div>
-            </div>
+      {/* Stats row */}
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
+        <div className="card">
+          <p className="text-xs text-slate-500 mb-1">Calories</p>
+          <p className="text-xl font-bold text-white">
+            {todayStats.caloriesBurned}
+            <span className="text-xs font-normal text-slate-500 ml-1">/ {goals.calories}</span>
+          </p>
+          <div className="progress-bar-track mt-2">
+            <div className="progress-bar-fill bg-orange-500" style={{ width: `${Math.min((todayStats.caloriesBurned / goals.calories) * 100, 100)}%` }} />
+          </div>
+        </div>
+        <div className="card">
+          <p className="text-xs text-slate-500 mb-1">Steps</p>
+          <p className="text-xl font-bold text-white">
+            {todayStats.steps.toLocaleString()}
+            <span className="text-xs font-normal text-slate-500 ml-1">/ {goals.steps.toLocaleString()}</span>
+          </p>
+          <div className="progress-bar-track mt-2">
+            <div className="progress-bar-fill bg-teal-500" style={{ width: `${Math.min((todayStats.steps / goals.steps) * 100, 100)}%` }} />
+          </div>
+        </div>
+        <div className="card">
+          <div className="flex items-center justify-between mb-1">
+            <p className="text-xs text-slate-500">Water</p>
             <div className="flex items-center gap-1">
               <button
                 onClick={decrementWater}
-                className="w-8 h-8 rounded-lg bg-surface-800 hover:bg-surface-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+                className="w-6 h-6 rounded bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
               >
-                <Minus size={14} />
+                <Minus size={12} />
               </button>
               <button
                 onClick={incrementWater}
-                className="w-8 h-8 rounded-lg bg-primary-500/15 hover:bg-primary-500/25 flex items-center justify-center text-primary-400 transition-colors"
+                className="w-6 h-6 rounded bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
               >
-                <Plus size={14} />
+                <Plus size={12} />
               </button>
             </div>
           </div>
-          {/* Water Drops visual */}
-          <div className="flex gap-1.5 flex-wrap">
+          <p className="text-xl font-bold text-white">
+            {todayStats.waterIntake}
+            <span className="text-xs font-normal text-slate-500 ml-1">/ {goals.water} glasses</span>
+          </p>
+          <div className="flex gap-1 mt-2">
             {Array.from({ length: goals.water }).map((_, i) => (
               <Droplets
                 key={i}
-                size={18}
-                className={`transition-colors duration-300 ${
-                  i < todayStats.waterIntake
-                    ? 'text-blue-400'
-                    : 'text-surface-700'
-                }`}
+                size={14}
+                className={i < todayStats.waterIntake ? 'text-blue-400' : 'text-slate-700'}
               />
             ))}
           </div>
         </div>
-        <StatCard
-          label="Active Minutes"
-          value={todayStats.activeMinutes}
-          target={goals.activeMinutes}
-          unit="min"
-          icon={Timer}
-          color="emerald"
-          ringColor="#10b981"
-        />
+        <div className="card">
+          <p className="text-xs text-slate-500 mb-1">Active</p>
+          <p className="text-xl font-bold text-white">
+            {todayStats.activeMinutes}
+            <span className="text-xs font-normal text-slate-500 ml-1">/ {goals.activeMinutes} min</span>
+          </p>
+          <div className="progress-bar-track mt-2">
+            <div className="progress-bar-fill bg-emerald-500" style={{ width: `${Math.min((todayStats.activeMinutes / goals.activeMinutes) * 100, 100)}%` }} />
+          </div>
+        </div>
       </div>
 
       {/* Charts */}
@@ -148,10 +104,10 @@ export default function Dashboard() {
       </div>
 
       {/* Today's Workouts */}
-      <div className="card animate-slide-up">
+      <div className="card">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-heading font-semibold text-white flex items-center gap-2">
-            <TrendingUp size={18} className="text-primary-400" />
+          <h3 className="text-sm font-medium text-white flex items-center gap-2">
+            <TrendingUp size={16} className="text-teal-500" />
             Today's Activity
           </h3>
           <span className="text-xs text-slate-500">
@@ -162,22 +118,22 @@ export default function Dashboard() {
         {todaysWorkouts.length === 0 ? (
           <p className="text-sm text-slate-500 py-4 text-center">
             No workouts logged yet today. Head to{' '}
-            <span className="text-primary-400">Workouts</span> to add one!
+            <span className="text-teal-500">Workouts</span> to add one!
           </p>
         ) : (
           <div className="space-y-2">
             {todaysWorkouts.map((w) => (
               <div
                 key={w.id}
-                className="flex items-center gap-4 px-4 py-3 rounded-xl bg-surface-800/50 hover:bg-surface-800 transition-colors"
+                className="flex items-center gap-4 px-4 py-3 rounded-lg bg-slate-800/40 hover:bg-slate-800/60 transition-colors"
               >
                 <div
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                  className={`w-9 h-9 rounded-lg flex items-center justify-center ${
                     w.intensity === 'high'
-                      ? 'bg-rose-500/15 text-rose-400'
+                      ? 'bg-rose-500/10 text-rose-400'
                       : w.intensity === 'moderate'
-                      ? 'bg-amber-500/15 text-amber-400'
-                      : 'bg-emerald-500/15 text-emerald-400'
+                      ? 'bg-amber-500/10 text-amber-400'
+                      : 'bg-emerald-500/10 text-emerald-400'
                   }`}
                 >
                   <Flame size={18} />

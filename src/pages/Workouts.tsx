@@ -6,7 +6,6 @@ import {
   Clock,
   Dumbbell,
   Search,
-  Filter,
 } from 'lucide-react';
 import { useFitness } from '../context/FitnessContext';
 import WorkoutForm from '../components/WorkoutForm';
@@ -96,14 +95,10 @@ export default function Workouts() {
           />
         </div>
         <div className="relative">
-          <Filter
-            size={16}
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500"
-          />
           <select
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
-            className="input-field pl-10 pr-8 appearance-none cursor-pointer min-w-[160px]"
+            className="input-field pr-8 appearance-none cursor-pointer min-w-[160px]"
           >
             <option value="all">All Types</option>
             {workoutTypeSet.map((t) => (
@@ -133,7 +128,7 @@ export default function Workouts() {
             const totalMin = items.reduce((sum, w) => sum + w.duration, 0);
 
             return (
-              <div key={date} className="animate-slide-up">
+              <div key={date}>
                 {/* Day header */}
                 <div className="flex items-center justify-between mb-3 px-1">
                   <h3 className="text-sm font-semibold text-slate-300">
@@ -145,7 +140,7 @@ export default function Workouts() {
                       {totalCal} kcal
                     </span>
                     <span className="flex items-center gap-1">
-                      <Clock size={12} className="text-primary-400" />
+                      <Clock size={12} className="text-teal-500" />
                       {totalMin} min
                     </span>
                   </div>
@@ -156,7 +151,7 @@ export default function Workouts() {
                   {items.map((w) => (
                     <div
                       key={w.id}
-                      className="card-hover flex items-center gap-4 group/item"
+                      className="card flex items-center gap-4 group/item"
                     >
                       <div
                         className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
